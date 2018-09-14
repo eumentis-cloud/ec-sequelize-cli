@@ -8,5 +8,8 @@ export default (tableName) => {
   fs.writeFile(
     path.resolve(process.cwd(), `./sequelize/migrations/${fileName}`),
     nunjucks.render(path.resolve(__dirname, '../nunjucks/migrationTable.njk'), { tableName }),
+    (err) => {
+      if (err) console.log(err);
+    },
   );
 };
