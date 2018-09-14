@@ -1,5 +1,5 @@
 {
-  "name": "ec-sequelize-cli",
+  "name": "@eumentis-cloud/sequelize-cli",
   "version": "1.0.0",
   "description": "Sequelize CLI for Eumentis Cloud's application servers",
   "bin": {
