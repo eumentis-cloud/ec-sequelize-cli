@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 import yargs from 'yargs';
 import packageJson from '../package.json';
 import migrationTable from './migrationTable';
