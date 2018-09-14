@@ -2,18 +2,27 @@
   "name": "ec-sequelize-cli",
   "version": "1.0.0",
   "description": "Sequelize CLI for Eumentis Cloud's application servers",
-  "main": "index.js",
+  "bin": {
+    "ecSequelize": "./dist/index.js"
+  },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "clean": "rimraf dist",
+    "build-js": "babel src --out-dir dist",
+    "build": "run-s clean build-js"
   },
   "author": "Pawan Samdani",
   "license": "MIT",
   "devDependencies": {
+    "@babel/cli": "^7.0.0",
+    "@babel/core": "^7.0.1",
+    "@babel/preset-env": "^7.0.0",
     "eslint": "5.3.0",
     "eslint-config-airbnb-base": "13.1.0",
     "eslint-config-prettier": "^3.0.1",
     "eslint-plugin-import": "2.14.0",
     "eslint-plugin-prettier": "^2.6.2",
-    "prettier": "^1.14.2"
+    "npm-run-all": "^4.1.3",
+    "prettier": "^1.14.2",
+    "rimraf": "^2.6.2"
   }
 }
