@@ -137,3 +137,8 @@ gen
 
 HELP.md
 .editorconfig
+src
+.eslintrc
+.gitignore
+.prettierrc
+babel.config.js
