@@ -142,3 +142,4 @@ src
 .gitignore
 .prettierrc
 babel.config.js
+sequelize
