@@ -2,6 +2,13 @@
 
 First make whatever changes that you want.
 
+Commit the changes
+
+Build files
+```
+yarn build
+```
+
 Bump the npm version
 ```bash
 # To bump major version vX.0.0
