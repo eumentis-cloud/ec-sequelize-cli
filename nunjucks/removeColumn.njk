@@ -1,0 +1,8 @@
+module.exports = {
+  up: (queryInterface) => queryInterface.removeColumn('{{ tableName }}', '{{ columnName }}'),
+
+  down: (queryInterface, DataTypes) =>
+    queryInterface.addColumn('{{ tableName }}', '{{ columnName }}', {
+      type: DataTypes.,
+    }),
+};

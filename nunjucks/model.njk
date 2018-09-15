@@ -1,0 +1,28 @@
+module.exports = (sequelize, DataTypes) => {
+  const {{ modelName }} = sequelize.define(
+    '{{ modelName }}',
+    // Fields
+    {
+
+    },
+    // Options
+    {
+      timestamps: true,
+      createdAt: true,
+      updatedAt: true,
+      deletedAt: true,
+      paranoid: true,
+      tableName: '{{ tableName }}',
+      defaultScope: {},
+      scopes: {},
+      comment: '',
+      hooks: {},
+    },
+  );
+
+  {{ modelName }}.associate = (models) => {
+
+  };
+
+  return {{ modelName }};
+};
