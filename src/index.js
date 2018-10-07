@@ -2,7 +2,14 @@
 
 import yargs from 'yargs';
 import packageJson from '../package.json';
-import { migrationTable, modelFile, addColumnMigrationFile, removeColumnMigrationFile } from './actions';
+import {
+  migrationTable,
+  modelFile,
+  addColumnMigrationFile,
+  removeColumnMigrationFile,
+  changeColumnMigrationFile,
+  renameColumnMigrationFile,
+} from './actions';
 
 const cli = yargs
   .scriptName('ecSequelize')
@@ -44,6 +51,40 @@ const cli = yargs
         });
     },
   )
+  .command(
+    'migration:column:change <table> <column>',
+    'Create migration file to change the column definition',
+    (yargs1) => {
+      yargs1
+        .positional('table', {
+          describe: 'Table name',
+          type: 'string',
+        })
+        .positional('column', {
+          describe: 'Column name',
+          type: 'string',
+        });
+    },
+  )
+  .command(
+    'migration:column:rename <table> <oldColumn> <newColumn>',
+    'Create migration file to rename column in table',
+    (yargs1) => {
+      yargs1
+        .positional('table', {
+          describe: 'Table name',
+          type: 'string',
+        })
+        .positional('oldColumn', {
+          describe: 'Old column name',
+          type: 'string',
+        })
+        .positional('newColumn', {
+          describe: 'New column name',
+          type: 'string',
+        });
+    },
+  )
   .demandCommand(1, 1, 'Run a command', 'Only one command allowed')
   .help();
 
@@ -62,6 +103,12 @@ if (args) {
       break;
     case 'migration:column:remove':
       removeColumnMigrationFile(args.table, args.column);
+      break;
+    case 'migration:column:change':
+      changeColumnMigrationFile(args.table, args.column);
+      break;
+    case 'migration:column:rename':
+      renameColumnMigrationFile(args.table, args.oldColumn, args.newColumn);
       break;
     default:
       console.error('Incorrect command given!');

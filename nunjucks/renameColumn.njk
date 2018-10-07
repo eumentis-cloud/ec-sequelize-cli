@@ -1,0 +1,5 @@
+module.exports = {
+  up: (queryInterface) => queryInterface.renameColumn('{{ tableName }}', '{{ oldColumnName }}', '{{ newColumnName }}'),
+
+  down: (queryInterface) => queryInterface.renameColumn('{{ tableName }}', '{{ newColumnName }}', '{{ oldColumnName }}'),
+};

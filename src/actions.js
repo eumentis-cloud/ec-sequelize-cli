@@ -48,4 +48,28 @@ export const removeColumnMigrationFile = (tableName, columnName) => {
   );
 };
 
+export const changeColumnMigrationFile = (tableName, columnName) => {
+  const fileName = `${moment().format('YYYYMMDDHHmmss')}-changeColumn-${tableName}-${columnName}.js`;
+  fs.writeFile(
+    path.resolve(process.cwd(), `./sequelize/migrations/${fileName}`),
+    nunjucks.render('changeColumn.njk', { tableName, columnName }),
+    (err) => {
+      if (err) console.log(err);
+    },
+  );
+};
+
+export const renameColumnMigrationFile = (tableName, oldColumnName, newColumnName) => {
+  const fileName = `${moment().format(
+    'YYYYMMDDHHmmss',
+  )}-renameColumn-${tableName}-${oldColumnName}-${newColumnName}.js`;
+  fs.writeFile(
+    path.resolve(process.cwd(), `./sequelize/migrations/${fileName}`),
+    nunjucks.render('renameColumn.njk', { tableName, oldColumnName, newColumnName }),
+    (err) => {
+      if (err) console.log(err);
+    },
+  );
+};
+
 export default null;
