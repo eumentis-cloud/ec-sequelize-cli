@@ -1,6 +1,6 @@
 {
   "name": "@eumentis-cloud/sequelize-cli",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "Sequelize CLI for Eumentis Cloud's application servers",
   "bin": {
     "ecSequelize": "./dist/index.js"
