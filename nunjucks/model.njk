@@ -1,3 +1,5 @@
+const validationRegex = require('@eumentis-cloud/js-validation-regex');
+
 module.exports = (sequelize, DataTypes) => {
   const {{ modelName }} = sequelize.define(
     '{{ modelName }}',
@@ -13,16 +15,14 @@ module.exports = (sequelize, DataTypes) => {
       deletedAt: true,
       paranoid: true,
       tableName: '{{ tableName }}',
-      defaultScope: {},
-      scopes: {},
-      comment: '',
-      hooks: {},
+      // defaultScope: {},
+      // scopes: {},
+      // comment: '',
+      // hooks: {},
     },
   );
 
-  {{ modelName }}.associate = (models) => {
-
-  };
+  {{ modelName }}.associate = (models) => {};
 
   return {{ modelName }};
 };
