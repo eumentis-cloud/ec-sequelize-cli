@@ -14,22 +14,36 @@
   "author": "Pawan Samdani",
   "license": "MIT",
   "devDependencies": {
-    "@babel/cli": "^7.0.0",
-    "@babel/core": "^7.0.1",
-    "@babel/preset-env": "^7.0.0",
-    "babel-eslint": "^9.0.0",
-    "eslint": "5.3.0",
-    "eslint-config-airbnb-base": "13.1.0",
-    "eslint-config-prettier": "^3.0.1",
-    "eslint-plugin-import": "2.14.0",
-    "eslint-plugin-prettier": "^2.6.2",
-    "npm-run-all": "^4.1.3",
-    "prettier": "^1.14.2",
-    "rimraf": "^2.6.2"
+    "@babel/cli": "^7.5.5",
+    "@babel/core": "^7.5.5",
+    "@babel/preset-env": "^7.5.5",
+    "babel-eslint": "^10.0.3",
+    "eslint": "6.1.0",
+    "eslint-config-airbnb-base": "14.0.0",
+    "eslint-config-prettier": "^6.1.0",
+    "eslint-plugin-import": "^2.18.2",
+    "eslint-plugin-prettier": "^3.1.0",
+    "husky": "^3.0.4",
+    "lint-staged": "^9.2.4",
+    "npm-run-all": "^4.1.5",
+    "prettier": "^1.18.2",
+    "rimraf": "^3.0.0"
   },
   "dependencies": {
-    "moment": "^2.22.2",
-    "nunjucks": "^3.1.3",
-    "yargs": "^12.0.2"
+    "moment": "^2.24.0",
+    "nunjucks": "^3.2.0",
+    "yargs": "^14.0.0"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "src/**/*.{js,mjs,jsx,ts,tsx}": "eslint -f table -c ./.eslintrc --ext .js,.jsx,.mjs,.ts,.tsx",
+    "*.{js,css,json,md}": [
+      "prettier --write",
+      "git add"
+    ]
   }
 }
