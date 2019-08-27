@@ -72,4 +72,15 @@ export const renameColumnMigrationFile = (tableName, oldColumnName, newColumnNam
   );
 };
 
+export const addUniqueConstraintMigrationFile = (tableName, columnNames) => {
+  const fileName = `${moment().format('YYYYMMDDHHmmss')}-addConstraint-${tableName}-${columnNames.join('_')}.js`;
+  fs.writeFile(
+    path.resolve(process.cwd(), `./sequelize/migrations/${fileName}`),
+    nunjucks.render('addUniqueConstraint.njk', { tableName, columnNames }),
+    (err) => {
+      if (err) console.log(err);
+    },
+  );
+};
+
 export default null;

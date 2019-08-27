@@ -1,0 +1,9 @@
+module.exports = {
+  up: (queryInterface) =>
+    queryInterface.addConstraint('{{ tableName }}', ['{{ columnNames.join("', '") | safe }}'], {
+      type: 'UNIQUE',
+      name: 'custom_unique_{{ tableName }}_{{ columnNames.join('-') }}',
+    }),
+
+  down: (queryInterface) => queryInterface.removeConstraint('{{ tableName }}', 'custom_unique_{{ tableName }}_{{ columnNames.join('-') }}'),
+};

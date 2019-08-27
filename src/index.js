@@ -9,6 +9,7 @@ import {
   removeColumnMigrationFile,
   changeColumnMigrationFile,
   renameColumnMigrationFile,
+  addUniqueConstraintMigrationFile,
 } from './actions';
 
 const cli = yargs
@@ -85,6 +86,21 @@ const cli = yargs
         });
     },
   )
+  .command(
+    'uniqueConstraint:add <table> <columns>',
+    'Create migration file to add new unique constraint to table',
+    (yargs1) => {
+      yargs1
+        .positional('table', {
+          describe: 'Table name',
+          type: 'string',
+        })
+        .positional('columns', {
+          describe: 'Comma separated list of column names',
+          type: 'string',
+        });
+    },
+  )
   .demandCommand(1, 1, 'Run a command', 'Only one command allowed')
   .help();
 
@@ -109,6 +125,9 @@ if (args) {
       break;
     case 'migration:column:rename':
       renameColumnMigrationFile(args.table, args.oldColumn, args.newColumn);
+      break;
+    case 'uniqueConstraint:add':
+      addUniqueConstraintMigrationFile(args.table, args.columns.split(',').map((entry) => entry.trim()));
       break;
     default:
       console.error('Incorrect command given!');
